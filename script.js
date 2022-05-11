@@ -5,6 +5,11 @@ actionMovies = [];
 async function getMovies() {
   let resPop = await searchPopular();
   console.log(resPop.results);
+  let allMovies = [];
+  resPop.results.forEach((Object) => {
+    allMovies.push(Object);
+  });
+
   document.getElementById("slideContainer").innerHTML += `
   <div class="slideText">
   <h2>${resPop.results[0].title}</h2>
@@ -26,11 +31,13 @@ async function getMovies() {
     <h1>${film.title}</h1>
     </div>
     <div class="overlay">
-    <ul>
-    <li>d</li>
-    <li>d</li>
-    <li>d</li>
-    </ul>
+    <div class="overlayButtons">
+    <i class="fa-solid fa-circle-play" id="overlayPlay" movieId="${allMovies.indexOf(
+      film
+    )}" onclick="play(this)"></i>
+
+    <i class="fa-solid fa-circle-info" id="overlayInfo"></i>
+    </div>
     </div>
     </div>
 
@@ -41,9 +48,9 @@ async function getMovies() {
   });
 }
 {
-  /* <li><i class="fa-solid fa-circle-play"></i></li>
-<li><div>${film.vote_average}</div></li>
-<li><i class="fa-solid fa-circle-info"></i></li> */
+  {
+    /* <div>${film.vote_average}</div> */
+  }
 }
 
 async function searchPopular() {
@@ -53,6 +60,10 @@ async function searchPopular() {
 
   let json = await response.json();
   return json;
+}
+
+function play(Object) {
+  console.log(Object.getAttribute("movieId"));
 }
 
 getMovies();
