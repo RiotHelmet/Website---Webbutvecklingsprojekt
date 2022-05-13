@@ -78,7 +78,12 @@ nav ul :nth-child(3) {
 nav ul :nth-child(4) {
   margin-left: auto;
   margin-right: 1vw;
-  font-size: 1vw;
+  font-size: 30px;
+}
+nav ul :nth-child(5) {
+  margin-left: auto;
+  margin-right: 1vw;
+  display: none;
 }
 
 /* Slide */
@@ -155,9 +160,6 @@ footer {
   z-index: 101;
 }
 
-.rowContainer {
-  width: 100%;
-}
 
 .rowContainer {
   width: 100%;
@@ -174,17 +176,19 @@ footer {
 
 .filmContainer {
   display: flex;
+  height: 30vh;
 }
 
 .filmDiv {
-  height: 30vh;
+  height: 100%;
   width: 10vw;
   top: 0;
   margin: 5px;
-  background-color: rgb(49, 42, 42);
   transition: 0.1s ease-in-out;
   transition-delay: 0.2s;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
 }
 
 .filmDiv img {
@@ -270,33 +274,195 @@ footer {
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 1000;
-  position: fixed;
-  display: flex;
+  position:fixed;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+#infoScroll {
+  position: absolute;
+  width: 100%;
+  height: fit-content;
   justify-content: center;
   align-items: center;
+  display: flex;
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
 
 #infoContainer {
   background-color:rgb(17, 17, 17);
   width: 35%;
-  height: 80%;
-  position: absolute;
+  height: fit-content;
+  position: relative;
   border-radius: 30px;
+  z-index: 2;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
+
 
 #infoClose {
   background-color: rgba(0, 0, 0, 0);
   width: 100%;
-  height: 100%;
+  height: 130%;
+  z-index: 1;
 }
 
 @keyframes openInfo {
   0% {
-    width: 28%;
-    height: 62%;
+    transform:scale(0.7);
   }
   100% {
-    width: 35%;
-    height: 80%;
+    transform:scale(1);
+  }
+}
+
+#infoImage {
+  width: 100%;
+  height: 40%;
+  overflow: hidden;
+  position: relative;
+}
+
+#infoImage img {
+  width: 100%;
+}
+
+#infoImage h1 {
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  margin: 0;
+  color: white;
+  margin: 10px;
+  font-size: 45px;
+}
+
+#infoDescription {
+  width: 90%;
+  height: 20%;
+  color: white;
+  -webkit-mask-image: linear-gradient(180deg, #000 60%, transparent);
+}
+
+#infoSimilarTitles {
+  color: white;
+  height: 5%;
+  font-size: 3vh;
+  display: flex;
+}
+
+#infoSimilar {
+  width: 90%;
+  height: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  /* background-color: black; */
+}
+
+
+.similarMovieDiv {
+  width: 22%;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 5px;
+}
+.similarMovieDiv img {
+  width: 100%;
+}
+
+.filmDivMobile {
+  height: 100%;
+  width: 10vw;
+  top: 0;
+  margin: 5px;
+  transition: 0.1s ease-in-out;
+  transition-delay: 0.2s;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.filmDivMobile img {
+  height:100%;
+}
+
+@media only screen and (max-width: 1200px) {
+  .filmDiv, .filmDivMobile {
+    width: 20vw;
+    align-items: center;
+  }
+
+  .filmDiv img {
+    height: 110%;
+  }
+
+  .filmDiv:hover {
+    width: 60vw;
+  }
+  #infoContainer {
+    width: 70%;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  nav ul {
+    padding: 0;
+  }
+  nav ul li {
+    display: none;
+  }
+  nav ul :nth-child(1) {
+    display: block;
+    margin-left: 1vw;
+  }
+  nav ul :nth-child(5) {
+    display: block;
+    font-size: 40px;
+  }
+
+  #infoContainer {
+    width: 80%;
+  }
+
+}
+
+@media only screen and (max-width: 700px) {
+
+  .filmDiv, .filmDivMobile {
+    width: 35vw;
+    align-items: center;
+  }
+
+
+  #slideContainer {
+    height: 40vh;
+  }
+
+  #slideContainer img {
+    height: 60vh;
+  }
+   
+  .slideText {
+    display: none;
+  }
+  .filmContainer {
+    height: 25vh;
+  }
+
+}
+
+@media only screen and (max-width: 450px) {
+  
+  #infoContainer {
+    width: 95%;
+    height: 50%;
+  }
+  .similarMovieDiv {
+    width: 25%;
   }
 }
