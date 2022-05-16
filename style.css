@@ -99,7 +99,8 @@ nav ul :nth-child(5) {
 }
 
 #slideContainer img {
-  height: 120vh;
+  width: 100vw;
+  object-fit: cover;
   position: relative;
 }
 
@@ -108,9 +109,30 @@ footer {
   width: 100%;
   color: white;
   position: relative;
-  background-color: rgb(25, 25, 25);
+  background-color: rgb(10, 10, 10);
   display: flex;
+  align-items: center;
   justify-content: center;
+  flex-direction: column;
+}
+
+.socialLinks a {
+  color: white;
+  font-size: 25px;
+  text-decoration: none;
+  margin: 5px;
+}
+
+.footerLinks {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+}
+
+.footerLinks li a {
+  color: white;
+  margin: 20px;
+  text-decoration: none;
 }
 
 .slideText {
@@ -245,7 +267,7 @@ footer {
   height: 55%;
   position: absolute;
   bottom: 0px;
-  z-index: 1;
+  z-index: 10;
 }
 
 .overlayButtons {
@@ -399,10 +421,6 @@ footer {
     align-items: center;
   }
 
-  .filmDiv img {
-    height: 110%;
-  }
-
   .filmDiv:hover {
     width: 60vw;
   }
@@ -453,6 +471,16 @@ footer {
   .filmContainer {
     height: 25vh;
   }
+
+  .socialLinks a {
+    font-size: 20px;
+    margin: 5px;
+  }
+
+  .footerLinks li a {
+    margin: 5px;
+    font-size: 12px;
+  }
 }
 
 @media only screen and (max-width: 450px) {
@@ -463,4 +491,19 @@ footer {
   .similarMovieDiv {
     width: 25%;
   }
+}
+
+.frame-container {
+  position: absolute;
+  height: 100%;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  filter: brightness(0.8);
+  pointer-events: none;
+}
+
+iframe {
+  transform: scale(0.5);
 }

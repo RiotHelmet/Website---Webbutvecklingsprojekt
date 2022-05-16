@@ -3,6 +3,7 @@ popularMovies = [];
 actionMovies = [];
 let allMovies = [];
 
+let mediaBig = window.matchMedia("(max-width: 1200px)");
 let mediaLaptop = window.matchMedia("(max-width: 1000px)");
 let mediaTablet = window.matchMedia("(max-width: 800px)");
 let mediaMobile = window.matchMedia("(max-width: 700px)");
@@ -29,7 +30,7 @@ async function getMovies() {
   </div>
   <img src="https://image.tmdb.org/t/p/original${
     resPop.results[0].backdrop_path
-  }" class="slideFilm">`;
+  }" class="slideFilm" alt="${resPop.results[0].title} backdrop">`;
   if (!mediaTablet.matches) {
     resPop.results.forEach((film) => {
       if (mediaMobile.matches) {
@@ -40,13 +41,21 @@ async function getMovies() {
         if (resPop.results.indexOf(film) > 4) {
           return false;
         }
+      } else if (mediaBig.matches) {
+        if (resPop.results.indexOf(film) > 7) {
+          return false;
+        }
       } else {
         if (resPop.results.indexOf(film) > 9) {
           return false;
         }
       }
 
-      document.getElementById("popular").innerHTML += `<div class="filmDiv">
+      document.getElementById(
+        "popular"
+      ).innerHTML += `<div class="filmDiv" onmouseover="loadVideo(this)" movieId="${allMovies.indexOf(
+        film
+      )}">
     <div class="filmHover">
     <div class="overlayContainer">
     <div class="titleDiv">
@@ -63,10 +72,14 @@ async function getMovies() {
     </div>
     </div>
     </div>
-
-    <img src="https://image.tmdb.org/t/p/original${film.backdrop_path}">
+    <div class="frame-container" id="frame${allMovies.indexOf(film)}"></div>
+    <img src="https://image.tmdb.org/t/p/original${film.backdrop_path}" alt="${
+        film.title
+      } backdrop">
     </div>
-    <img src="https://image.tmdb.org/t/p/w500${film.poster_path}">
+    <img src="https://image.tmdb.org/t/p/w500${film.poster_path}" alt="${
+        film.title
+      } poster">
     </div>`;
     });
   } else {
@@ -90,7 +103,9 @@ async function getMovies() {
       ).innerHTML += `<div class="filmDivMobile" onclick="moreInfo(this)" movieId="${allMovies.indexOf(
         film
       )}">
-    <img src="https://image.tmdb.org/t/p/w500${film.poster_path}">
+    <img src="https://image.tmdb.org/t/p/w500${film.poster_path}" alt="${
+        film.title
+      } backdrop">
     </div>`;
     });
   }
@@ -112,7 +127,6 @@ function play(Object) {
 getMovies();
 
 function moreInfo(Object) {
-  console.log(Object);
   let film = allMovies[Object.getAttribute("movieId")];
   closeInfo();
   let infoBackground = document.getElementById("infoBackground");
@@ -122,7 +136,7 @@ function moreInfo(Object) {
   infoBackground.style.display = "flex";
   infoImage.innerHTML = `
   <h1>${film.title}</h1>
-  <img src="https://image.tmdb.org/t/p/original${film.backdrop_path}"></img>`;
+  <img src="https://image.tmdb.org/t/p/original${film.backdrop_path}" alt="${film.title} backdrop"></img>`;
 
   infoDescription.innerHTML = `<p>${film.overview}</p>`;
 
@@ -137,7 +151,9 @@ function moreInfo(Object) {
         <div class="similarMovieDiv" movieId="${allMovies.indexOf(
           Index
         )}" onclick="moreInfo(this)">
-          <img src="https://image.tmdb.org/t/p/original${Index.poster_path}">
+          <img src="https://image.tmdb.org/t/p/original${
+            Index.poster_path
+          }" alt="${film.title} poster">
         </div>`;
     });
   }, 200);
@@ -193,4 +209,39 @@ function shuffle(array) {
   }
 
   return array;
+}
+
+async function searchVideo(movie) {
+  let id = movie.id;
+
+  let key;
+  let response = await fetch(
+    `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${apiKey}`
+  );
+  let json = await response.json();
+  if (json.results.length > 0) {
+    key = json.results[0].key;
+    return key;
+  }
+}
+
+async function loadVideo(Object) {
+  let key = await searchVideo(allMovies[Object.getAttribute("movieId")]);
+  if (
+    document
+      .getElementById(`frame${Object.getAttribute("movieId")}`)
+      .innerHTML.trim() == ""
+  ) {
+    if (key !== undefined) {
+      document.getElementById(
+        `frame${Object.getAttribute("movieId")}`
+      ).innerHTML = `<iframe width="1280" height="720" src="https://www.youtube.com/embed/${key}?autoplay=1&mute=1&loop=1&playlist=${key}">`;
+    } else {
+      document.getElementById(
+        `frame${Object.getAttribute("movieId")}`
+      ).innerHTML = `<img src="https://image.tmdb.org/t/p/original${
+        allMovies[Object.getAttribute("movieId")].backdrop_path
+      }" alt="${film.title} poster">`;
+    }
+  }
 }

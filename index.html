@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>NetBlix</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -32,44 +32,48 @@
       </nav>
     </header>
 
-    <div id="infoBackground">
-      <div id="infoScroll">
-        <div id="infoContainer">
-          <div id="infoImage"></div>
-          <div id="infoDescription"></div>
+    <main>
+      <div id="infoBackground">
+        <div id="infoScroll">
+          <div id="infoContainer">
+            <div id="infoImage"></div>
+            <div id="infoDescription"></div>
 
-          <h1 id="infoSimilarTitles">Similar Titles</h1>
-          <div id="infoSimilar"></div>
+            <h1 id="infoSimilarTitles">Similar Titles</h1>
+            <div id="infoSimilar"></div>
+          </div>
         </div>
+
+        <div id="infoClose" onclick="closeInfo()"></div>
       </div>
 
-      <div id="infoClose" onclick="closeInfo()"></div>
-    </div>
-
-    <div id="slideContainer"></div>
-    <div id="rowDiv">
-      <div class="rowContainer">
-        <h1>Popular</h1>
-        <div class="filmContainer" id="popular"></div>
+      <div id="slideContainer"></div>
+      <div id="rowDiv">
+        <div class="rowContainer">
+          <h1>Popular</h1>
+          <div class="filmContainer" id="popular"></div>
+        </div>
+        <div class="rowContainer"></div>
+        <div class="rowContainer"></div>
       </div>
-      <div class="rowContainer"></div>
-      <div class="rowContainer"></div>
-    </div>
+    </main>
+
     <footer>
-      <div class="social">
-        <a href="#"><i class="fa-brands fa-instagram"></i></i></a
-        ><a href="#"><i class="fa-brands fa-snapchat"></i></i></a
-        ><a href="#"><i class="fa-brands fa-twitter"></i></i></a
-        ><a href="#"><i class="fa-brands fa-facebook"></i></i></a>
+      <div class="socialLinks">
+        <a href="#"><i class="fa-brands fa-instagram"></i></a
+        ><a href="#"><i class="fa-brands fa-snapchat"></i></a
+        ><a href="#"><i class="fa-brands fa-twitter"></i></a
+        ><a href="#"><i class="fa-brands fa-facebook"></i></a>
       </div>
-      <ul class="list-inline">
-        <li class="list-inline-item"><a href="#">Home</a></li>
-        <li class="list-inline-item"><a href="#">Services</a></li>
-        <li class="list-inline-item"><a href="#">About</a></li>
-        <li class="list-inline-item"><a href="#">Terms</a></li>
-        <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+      <ul class="footerLinks">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Terms</a></li>
+        <li><a href="#">Privacy Policy</a></li>
       </ul>
-      <p class="copyright">Company Name © 2018</p>
+
+      <p class="copyright">Company Name © 2022</p>
     </footer>
     <script src="script.js"></script>
     <script
