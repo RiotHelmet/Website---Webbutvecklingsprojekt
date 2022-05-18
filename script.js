@@ -22,7 +22,7 @@ async function getMovies() {
   <div class="slideButtons"> 
   <div class="slidePlay" movieId="${allMovies.indexOf(
     resPop.results[0]
-  )}" ><i class="fa-solid fa-circle-play"></i> Play Title </div> 
+  )}" onclick="play(this)" ><i class="fa-solid fa-circle-play" ></i> Play Title </div> 
   <div class="slideInfo" movieId="${allMovies.indexOf(
     resPop.results[0]
   )}" onclick="moreInfo(this)" > <i class="fa-solid fa-circle-info"></i> More Info </div> 
@@ -120,8 +120,20 @@ async function searchPopular() {
   return json;
 }
 
-function play(Object) {
-  console.log(Object.getAttribute("movieId"));
+async function play(Object) {
+  let key = await searchVideo(allMovies[Object.getAttribute("movieId")]);
+  // console.log(document.getElementById("playerContainer"));
+  // document.getElementById("playerContainer").innerHTML = `
+  // <iframe
+  // width="1920"
+  // height="1080"
+  // src="https://www.youtube.com/embed/"${key}"
+  // title="YouTube video player"
+  // frameborder="0"
+  // allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  // allowfullscreen
+  // ></iframe style="width:100%; height:100%;">`;
+  window.location = "player.html/${key}";
 }
 
 getMovies();
