@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NetBlix</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -24,7 +24,7 @@
             <a href=""><i class="fa fa-solid fa-user"></i></a>
           </li>
           <li>
-            <a href="" class="mobileMenu"
+            <a href="#" class="mobileMenu" onclick="openMenu()"
               ><i class="fa fa-solid fa-bars"></i
             ></a>
           </li>
@@ -33,6 +33,15 @@
     </header>
 
     <main>
+      <div id="mobileMenuContainer">
+        <div id="mobileMenu">
+          <a href="index.html">Home</a>
+          <a href="">Search</a>
+          <a href="">User</a>
+        </div>
+        <div id="mobileMenuBackground" onclick="closeMenu()"></div>
+      </div>
+
       <div id="infoBackground">
         <div id="infoScroll">
           <div id="infoContainer">
@@ -48,14 +57,14 @@
       </div>
 
       <div id="slideContainer"></div>
-      <div id="rowDiv">
+      <section id="rowDiv">
         <div class="rowContainer">
           <h1>Popular</h1>
           <div class="filmContainer" id="popular"></div>
         </div>
         <div class="rowContainer"></div>
         <div class="rowContainer"></div>
-      </div>
+      </section>
     </main>
 
     <footer>
@@ -75,7 +84,7 @@
 
       <p class="copyright">Company Name © 2022</p>
     </footer>
-    <script src="script.js"></script>
+    <script src="script/script.js"></script>
     <script
       src="https://kit.fontawesome.com/1e87e55979.js"
       crossorigin="anonymous"
