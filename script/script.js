@@ -84,6 +84,7 @@ async function getMovies() {
     });
   } else {
     resPop.results.forEach((film) => {
+      const actionFilm = allMovies[allMovies.indexOf(film) + 5];
       if (mediaMobile.matches) {
         if (resPop.results.indexOf(film) > 2) {
           return false;
@@ -269,6 +270,15 @@ async function searchVideo(movie) {
     key = json.results[0].key;
     return key;
   }
+}
+
+async function searchGenre(genreId) {
+  var url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${genreId}`;
+
+  let response = await fetch(url);
+
+  let json = await response.json();
+  return json;
 }
 
 async function loadVideo(Object) {
