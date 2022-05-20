@@ -13,6 +13,13 @@ body {
   font-family: "Radio Canada", sans-serif;
 }
 
+.contactMain {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}
+
 img {
   filter: brightness(0.8);
   z-index: 0;
@@ -30,7 +37,7 @@ img {
 header {
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 10000;
 }
 
 nav {
@@ -39,7 +46,7 @@ nav {
   height: 50px;
   background: var(--bgColor);
   align-items: center;
-  box-shadow: 25px 25px 50px 0 black, -25px -25px 50px 0 black;
+  box-shadow: 25px 15px 50px 0 black, -25px -25px 50px 0 black;
 }
 
 nav ul {
@@ -105,15 +112,20 @@ nav ul :nth-child(5) {
 }
 
 footer {
-  height: 20vh;
+  height: fit-content;
   width: 100%;
   color: white;
+  margin-bottom: 0px;
   position: relative;
   background-color: rgb(10, 10, 10);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+
+.socialLinks {
+  margin-top: 10px;
 }
 
 .socialLinks a {
@@ -173,6 +185,7 @@ footer {
   display: flex;
   margin: auto;
   font-size: 20px;
+  cursor: pointer;
 }
 
 .slideButtons :hover {
@@ -290,6 +303,10 @@ footer {
   font-size: 35px;
   align-items: center;
 }
+.overlayButtons i {
+  cursor: pointer;
+
+}
 
 #infoBackground {
   width: 100vw;
@@ -309,7 +326,7 @@ footer {
   justify-content: center;
   align-items: center;
   display: flex;
-  padding-top: 100px;
+  padding-top: 50px;
   padding-bottom: 100px;
 }
 
@@ -391,6 +408,7 @@ footer {
   overflow: hidden;
   border-radius: 5px;
   margin-bottom: 40px;
+  cursor: pointer;
 }
 .similarMovieDiv img {
   width: 100%;
@@ -412,84 +430,6 @@ footer {
   height: 100%;
 }
 
-@media only screen and (max-width: 1200px) {
-  .filmDiv,
-  .filmDivMobile {
-    width: 20vw;
-    align-items: center;
-  }
-
-  .filmDiv:hover {
-    width: 60vw;
-  }
-  #infoContainer {
-    width: 70%;
-  }
-}
-
-@media only screen and (max-width: 1000px) {
-  nav ul {
-    padding: 0;
-  }
-  nav ul li {
-    display: none;
-  }
-  nav ul :nth-child(1) {
-    display: block;
-    margin-left: 1vw;
-  }
-  nav ul :nth-child(5) {
-    display: block;
-    font-size: 40px;
-  }
-
-  #infoContainer {
-    width: 80%;
-  }
-}
-
-@media only screen and (max-width: 700px) {
-  .filmDiv,
-  .filmDivMobile {
-    width: 35vw;
-    align-items: center;
-  }
-
-  #slideContainer {
-    height: 40vh;
-  }
-
-  #slideContainer img {
-    height: 60vh;
-  }
-
-  .slideText {
-    display: none;
-  }
-  .filmContainer {
-    height: 25vh;
-  }
-
-  .socialLinks a {
-    font-size: 20px;
-    margin: 5px;
-  }
-
-  .footerLinks li a {
-    margin: 5px;
-    font-size: 12px;
-  }
-}
-
-@media only screen and (max-width: 450px) {
-  #infoContainer {
-    width: 95%;
-    height: 50%;
-  }
-  .similarMovieDiv {
-    width: 25%;
-  }
-}
 
 .frame-container {
   position: absolute;
@@ -589,3 +529,225 @@ padding: 20px; */
   }
 }
 
+
+/* ------------------------ */
+
+
+  
+.center h1 {
+  text-align: center;
+  padding: 1% 0 1% 0;
+  border-bottom: 1px solid white;
+  color: white;
+  font-weight: 100;
+}
+
+  
+.center {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  margin-bottom: 15vh;
+  transform: translate(-50%, -50%);
+  width: 30%;
+  background: rgb(35, 35, 35);
+  border-radius: 10px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+}
+
+#contactForm {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.center form {
+  padding: 0 5%;
+  box-sizing: border-box;
+}
+
+form .text_field {
+  position: relative;
+  margin-bottom: 5%;
+  margin-top: 5%;
+}
+
+.text_field input {
+  width: 95%;
+  position: relative;
+  padding: 10px 5px;
+  font-size: 16px;
+  border: none;
+  background: #353536;
+  outline: none;
+  color: white;
+  border-radius: 5px;
+}
+.text_field textarea {
+  width: 95%;
+  max-width: 95%;
+  min-width: 95%;
+  position: relative;
+  padding: 10px 5px;
+  font-size: 16px;
+  border: none;
+  background: #353536;
+  outline: none;
+  color: white;
+  border-radius: 5px;
+}
+
+.text_field label {
+  position: relative;
+  color: #adadad;
+  left: 5px;
+  transform: translateY(-50%);
+  font-size: 16px;
+  pointer-events: none;
+}
+
+
+
+.text_field span::before {
+  content: "";
+  position: absolute;
+  top: 19px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: white;
+  transition: 0.3s;
+}
+
+.password {
+  margin: -5px 0 20px 5px;
+  color: #a6a6a6;
+  cursor: pointer;
+}
+.password:hover {
+  text-decoration: underline;
+}
+
+input[type="submit"] {
+  width: 60%;
+  height: 40px;
+  border: 1px solid;
+  background: #353536;
+  border-radius: 5px;
+  border-color: #353536;
+  font-size: 18px;
+  color: #e9f4fb;
+  cursor: pointer;
+  outline: none;
+  transition: 0.3s ease-in-out;
+  margin: auto;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+input[type="submit"]:hover {
+  width: 63%;
+  opacity: 0.9;
+}
+
+
+/* -------------------------------------- */
+
+
+@media only screen and (max-width: 1200px) {
+  .filmDiv,
+  .filmDivMobile {
+    width: 20vw;
+    align-items: center;
+  }
+
+  .center {
+    width: 45%;
+  }
+
+  .filmDiv:hover {
+    width: 60vw;
+  }
+  #infoContainer {
+    width: 70%;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  nav ul {
+    padding: 0;
+  }
+  nav ul li {
+    display: none;
+  }
+  nav ul :nth-child(1) {
+    display: block;
+    margin-left: 1vw;
+  }
+  nav ul :nth-child(5) {
+    display: block;
+    font-size: 40px;
+  }
+
+  #infoContainer {
+    width: 80%;
+  }
+  
+  .center {
+    width: 55%;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .filmDiv,
+  .filmDivMobile {
+    width: 35vw;
+    align-items: center;
+  }
+
+  .center {
+    width: 65%;
+  }
+
+  #slideContainer {
+    height: 40vh;
+  }
+
+  #slideContainer img {
+    height: 60vh;
+  }
+
+  .slideText {
+    display: none;
+  }
+  .filmContainer {
+    height: 25vh;
+  }
+
+  .socialLinks a {
+    font-size: 20px;
+    margin: 5px;
+  }
+
+  .footerLinks li a {
+    margin: 5px;
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  #infoContainer {
+    width: 95%;
+    height: 50%;
+  }
+
+  .center {
+    width: 75%;
+  }
+
+  .similarMovieDiv {
+    width: 25%;
+  }
+}
