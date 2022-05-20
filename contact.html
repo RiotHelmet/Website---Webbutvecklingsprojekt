@@ -4,14 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NetBlix</title>
+    <title>Document</title>
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Radio+Canada&display=swap"
-      rel="stylesheet"
-    />
   </head>
   <body>
     <header>
@@ -32,7 +26,7 @@
       </nav>
     </header>
 
-    <main>
+    <main class="contactMain">
       <div id="mobileMenuContainer">
         <div id="mobileMenu">
           <a href="index.html">Home</a>
@@ -42,27 +36,35 @@
         <div id="mobileMenuBackground" onclick="closeMenu()"></div>
       </div>
 
-      <div id="infoBackground">
-        <div id="infoScroll">
-          <div id="infoContainer">
-            <div id="infoImage"></div>
-            <div id="infoDescription"></div>
+      <div id="contactWindow">
+        <div class="center">
+          <h1>Contact Us</h1>
+          <form action="" id="contactForm">
+            <div class="text_field">
+              <label for="Email">Email</label>
+              <input type="email" required id="email_input" />
+            </div>
+            <div class="text_field">
+              <label for="Title">Title</label>
+              <input type="text" required id="title_input" />
+            </div>
+            <div class="text_field" id="message_field">
+              <label for="text">Message</label>
 
-            <h1 id="infoSimilarTitles">Similar Titles</h1>
-            <div id="infoSimilar"></div>
-          </div>
+              <textarea
+                type="text"
+                required
+                id="message_input"
+                name="message"
+                id=""
+                cols="30"
+                rows="3"
+              ></textarea>
+            </div>
+            <input type="submit" value="send" />
+          </form>
         </div>
-
-        <div id="infoClose" onclick="closeInfo()"></div>
       </div>
-
-      <div id="slideContainer"></div>
-      <section id="rowDiv">
-        <div class="rowContainer">
-          <h1>Popular</h1>
-          <div class="filmContainer" id="popular"></div>
-        </div>
-      </section>
     </main>
 
     <footer>
